@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.36.0](https://github.com/openfoodfacts/openfoodfacts-server/compare/v2.35.0...v2.36.0) (2024-06-18)
+
+
+### Features
+
+* Rare crops knowledge panel - Divinfood project ([#10438](https://github.com/openfoodfacts/openfoodfacts-server/issues/10438)) ([ac79a7a](https://github.com/openfoodfacts/openfoodfacts-server/commit/ac79a7a9bc1ee0cbbe5879c9ffd1c5bac6b66482))
+
 ## [2.35.0](https://github.com/openfoodfacts/openfoodfacts-server/compare/v2.34.0...v2.35.0) (2024-06-18)
 
 
