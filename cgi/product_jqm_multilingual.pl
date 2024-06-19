@@ -80,6 +80,9 @@ my $comment = '(app)';
 
 my $interface_version = '20150316.jqm2';
 
+# One of: "add", "edit"
+my $operation_type;
+
 my %response = ();
 
 my $code = single_param('code');
@@ -109,8 +112,10 @@ else {
 
 	my $product_id = product_id_for_owner($Owner_id, $code);
 	my $product_ref = retrieve_product($product_id);
+	$operation_type = "edit";
 
 	if (not defined $product_ref) {
+		$operation_type = "add";
 		$product_ref = init_product($User_id, $Org_id, $code, $country);
 		$product_ref->{interface_version_created} = $interface_version;
 	}
@@ -427,6 +432,8 @@ else {
 		$response{status} = 0;
 		$response{status_verbose} = 'not modified';
 	}
+	$response{body} = {};
+	$response{body}{operation_type} = $operation_type;
 }
 
 my $data = encode_json(\%response);
