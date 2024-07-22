@@ -1,4 +1,4 @@
-﻿version: "3.7"
+version: "3.7"
 
 x-backend-conf: &backend-conf
   image: openfoodfacts-server/backend:dev
@@ -41,7 +41,7 @@ services:
     # only turn on for off profile
     <<: *minion-db-network
   backend:
-    <<: [*backend-conf, *minion-db-network] 
+    <<: [*backend-conf, *minion-db-network]
   incron: *backend-conf
   minion:
     <<: [*backend-conf, *minion-db-network]
@@ -86,7 +86,7 @@ services:
     networks:
         default:
           aliases:
-            # trick: make it possible for robotoff to reach it internally, 
+            # trick: make it possible for robotoff to reach it internally,
             # using localhost domain
             - world.openfoodfacts.localhost
             - static.openfoodfacts.localhost
