@@ -9,6 +9,11 @@ on:
     tags:
       - v*.*.*
 
+env:
+  GCP_PROJECT_ID: wisebite-app
+  GCP_ARTIFACT_REGISTRY: core
+  GCP_ARTIFACT_REGISTRY_LOCATION: europe-west1
+
 # Note on secrets used for connection
 # SSH_PRIVATE_KEY is the private key (shared between VM and host)
 
