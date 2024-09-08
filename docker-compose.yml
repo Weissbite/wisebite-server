@@ -1,7 +1,7 @@
 version: "3.7"
 
 x-backend-conf: &backend-conf
-  image: ghcr.io/openfoodfacts/openfoodfacts-server/backend:${TAG}
+  image: europe-west1-docker.pkg.dev/wisebite-app/core/backend:${TAG}
   environment:
     - PRODUCERS_PLATFORM
     - PRODUCT_OPENER_DOMAIN
@@ -114,7 +114,7 @@ services:
     ports:
       - ${PRODUCT_OPENER_EXPOSE}${BACKEND_INCRON_PORT}:80
   frontend:
-    image: ghcr.io/openfoodfacts/openfoodfacts-server/frontend:${TAG}
+    image: europe-west1-docker.pkg.dev/wisebite-app/core/frontend:${TAG}
     depends_on:
       - backend
     environment:
