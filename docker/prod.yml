@@ -10,7 +10,7 @@ services:
     - webnet
   backend:
     restart: always
-    networks: 
+    networks:
     - webnet
   incron:
     restart: always

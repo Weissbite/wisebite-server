@@ -28,21 +28,21 @@ jobs:
         # direct container access
         echo "REDIS_URL=redis:6379" >> $GITHUB_ENV
         echo "RATE_LIMITER_BLOCKING_ENABLED=0" >> $GITHUB_ENV
-        echo "MONGODB_HOST=10.1.0.200" >> $GITHUB_ENV
+        echo "MONGODB_HOST=35.210.10.19" >> $GITHUB_ENV
         echo "ROBOTOFF_URL=https://robotoff.openfoodfacts.net" >> $GITHUB_ENV
-        echo "QUERY_URL=http://10.1.0.200:5511" >> $GITHUB_ENV
-        echo "PRODUCT_OPENER_DOMAIN=openfoodfacts.net" >> $GITHUB_ENV
+        echo "QUERY_URL=http://35.210.10.19:5511" >> $GITHUB_ENV
+        echo "PRODUCT_OPENER_DOMAIN=wisebite.app" >> $GITHUB_ENV
         echo "PRODUCT_OPENER_FLAVOR=openfoodfacts" >> $GITHUB_ENV
         echo "PRODUCT_OPENER_FLAVOR_SHORT=off" >> $GITHUB_ENV
         echo "POSTGRES_USER=postgres" >> $GITHUB_ENV
         echo "CROWDIN_PROJECT_IDENTIFIER=openfoodfacts" >> $GITHUB_ENV
         echo "GEOLITE2_PATH=/usr/local/share/GeoLite2-Country/GeoLite2-Country.mmdb" >> $GITHUB_ENV
-        echo "INFLUXDB_HOST=10.1.0.200" >> $GITHUB_ENV
+        echo "INFLUXDB_HOST=35.210.10.19" >> $GITHUB_ENV
         echo "FACETS_KP_URL=https://facets-kp.openfoodfacts.net/render-to-html" >> $GITHUB_ENV
         # deploy target
-        echo "SSH_HOST=10.1.0.200" >> $GITHUB_ENV
+        echo "SSH_HOST=35.210.10.19" >> $GITHUB_ENV
         echo "SSH_PROXY_HOST=ovh1.openfoodfacts.org" >> $GITHUB_ENV
-        echo "SSH_USERNAME=off" >> $GITHUB_ENV
+        echo "SSH_USERNAME=wisebite" >> $GITHUB_ENV
 
     - name: Set various variable for prod (org) deployment
       if: matrix.env == 'off-org'
@@ -55,10 +55,10 @@ jobs:
       with:
         host: ${{ env.SSH_HOST }}
         username: ${{ env.SSH_USERNAME }}
-        key: ${{ secrets.SSH_PRIVATE_KEY }}
+        key: ${{ secrets.WISEBITE_SSH_PRIVATE_KEY }}
         proxy_host: ${{ env.SSH_PROXY_HOST }}
         proxy_username: ${{ env.SSH_USERNAME }}
-        proxy_key: ${{ secrets.SSH_PRIVATE_KEY }}
+        proxy_key: ${{ secrets.WISEBITE_SSH_PRIVATE_KEY }}
         script: |
           if [[ -f /home/off/${{ matrix.env }}/NO_DEPLOY ]]
           then
@@ -91,7 +91,7 @@ jobs:
       run: echo job does not exist && true
 
     - name: Do something if build fail
-      if: steps.wait-build.outputs.conclusion == 'failure' || steps.wait-build2.outputs.conclusion == 'failure' 
+      if: steps.wait-build.outputs.conclusion == 'failure' || steps.wait-build2.outputs.conclusion == 'failure'
       run: echo fail && false # fail if build fail
 
     - name: Do something if build timeout
@@ -103,10 +103,10 @@ jobs:
       with:
         host: ${{ env.SSH_HOST }}
         username: ${{ env.SSH_USERNAME }}
-        key: ${{ secrets.SSH_PRIVATE_KEY }}
+        key: ${{ secrets.WISEBITE_SSH_PRIVATE_KEY }}
         proxy_host: ${{ env.SSH_PROXY_HOST }}
         proxy_username: ${{ env.SSH_USERNAME }}
-        proxy_key: ${{ secrets.SSH_PRIVATE_KEY }}
+        proxy_key: ${{ secrets.WISEBITE_SSH_PRIVATE_KEY }}
         script_stop: false
         script: |
           # while we would use shallow clone on a normal repo,
@@ -129,10 +129,10 @@ jobs:
       with:
         host: ${{ env.SSH_HOST }}
         username: ${{ env.SSH_USERNAME }}
-        key: ${{ secrets.SSH_PRIVATE_KEY }}
+        key: ${{ secrets.WISEBITE_SSH_PRIVATE_KEY }}
         proxy_host: ${{ env.SSH_PROXY_HOST }}
         proxy_username: ${{ env.SSH_USERNAME }}
-        proxy_key: ${{ secrets.SSH_PRIVATE_KEY }}
+        proxy_key: ${{ secrets.WISEBITE_SSH_PRIVATE_KEY }}
         script_stop: false
         script: |
           # Go to repository directory
@@ -162,7 +162,7 @@ jobs:
           echo "MINION_QUEUE=${{ env.PRODUCT_OPENER_DOMAIN }}" >> .env
           echo "MONGODB_HOST=${{ env.MONGODB_HOST }}" >> .env
           echo "POSTGRES_USER=${{ env.POSTGRES_USER }}" >> .env
-          echo "POSTGRES_PASSWORD=${{ secrets.POSTGRES_PASSWORD }}" >> .env
+          echo "POSTGRES_PASSWORD=${{ secrets.WISEBITE_POSTGRES_PASSWORD }}" >> .env
           echo "ROBOTOFF_URL=${{ env.ROBOTOFF_URL }}" >> .env
           echo "QUERY_URL=${{ env.QUERY_URL }}" >> .env
           echo "REDIS_URL=${{ env.REDIS_URL }}" >> .env
@@ -187,10 +187,10 @@ jobs:
       with:
         host: ${{ env.SSH_HOST }}
         username: ${{ env.SSH_USERNAME }}
-        key: ${{ secrets.SSH_PRIVATE_KEY }}
+        key: ${{ secrets.WISEBITE_SSH_PRIVATE_KEY }}
         proxy_host: ${{ env.SSH_PROXY_HOST }}
         proxy_username: ${{ env.SSH_USERNAME }}
-        proxy_key: ${{ secrets.SSH_PRIVATE_KEY }}
+        proxy_key: ${{ secrets.WISEBITE_SSH_PRIVATE_KEY }}
         script_stop: false
         script: |
           cd ${{ matrix.env }} && \
@@ -203,10 +203,10 @@ jobs:
       with:
         host: ${{ env.SSH_HOST }}
         username: ${{ env.SSH_USERNAME }}
-        key: ${{ secrets.SSH_PRIVATE_KEY }}
+        key: ${{ secrets.WISEBITE_SSH_PRIVATE_KEY }}
         proxy_host: ${{ env.SSH_PROXY_HOST }}
         proxy_username: ${{ env.SSH_USERNAME }}
-        proxy_key: ${{ secrets.SSH_PRIVATE_KEY }}
+        proxy_key: ${{ secrets.WISEBITE_SSH_PRIVATE_KEY }}
         command_timeout: 25m
         script_stop: false
         script: |
@@ -232,10 +232,10 @@ jobs:
       with:
         host: ${{ env.SSH_HOST }}
         username: ${{ env.SSH_USERNAME }}
-        key: ${{ secrets.SSH_PRIVATE_KEY }}
+        key: ${{ secrets.WISEBITE_SSH_PRIVATE_KEY }}
         proxy_host: ${{ env.SSH_PROXY_HOST }}
         proxy_username: ${{ env.SSH_USERNAME }}
-        proxy_key: ${{ secrets.SSH_PRIVATE_KEY }}
+        proxy_key: ${{ secrets.WISEBITE_SSH_PRIVATE_KEY }}
         command_timeout: 25m
         script_stop: false
         script: |
@@ -247,10 +247,10 @@ jobs:
       with:
         host: ${{ env.SSH_HOST }}
         username: ${{ env.SSH_USERNAME }}
-        key: ${{ secrets.SSH_PRIVATE_KEY }}
+        key: ${{ secrets.WISEBITE_SSH_PRIVATE_KEY }}
         proxy_host: ${{ env.SSH_PROXY_HOST }}
         proxy_username: ${{ env.SSH_USERNAME }}
-        proxy_key: ${{ secrets.SSH_PRIVATE_KEY }}
+        proxy_key: ${{ secrets.WISEBITE_SSH_PRIVATE_KEY }}
         command_timeout: 15m
         script_stop: false
         script: |
@@ -265,10 +265,10 @@ jobs:
       with:
         host: ${{ env.SSH_HOST }}
         username: ${{ env.SSH_USERNAME }}
-        key: ${{ secrets.SSH_PRIVATE_KEY }}
+        key: ${{ secrets.WISEBITE_SSH_PRIVATE_KEY }}
         proxy_host: ${{ env.SSH_PROXY_HOST }}
         proxy_username: ${{ env.SSH_USERNAME }}
-        proxy_key: ${{ secrets.SSH_PRIVATE_KEY }}
+        proxy_key: ${{ secrets.WISEBITE_SSH_PRIVATE_KEY }}
         script_stop: false
         script: |
           cd ${{ matrix.env }} && \
@@ -280,10 +280,10 @@ jobs:
       with:
         host: ${{ env.SSH_HOST }}
         username: ${{ env.SSH_USERNAME }}
-        key: ${{ secrets.SSH_PRIVATE_KEY }}
+        key: ${{ secrets.WISEBITE_SSH_PRIVATE_KEY }}
         proxy_host: ${{ env.SSH_PROXY_HOST }}
         proxy_username: ${{ env.SSH_USERNAME }}
-        proxy_key: ${{ secrets.SSH_PRIVATE_KEY }}
+        proxy_key: ${{ secrets.WISEBITE_SSH_PRIVATE_KEY }}
         script_stop: false
         script: |
           cd ${{ matrix.env }} && \
