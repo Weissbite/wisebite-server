@@ -51,8 +51,6 @@ jobs:
         registry: '${{ env.GCP_ARTIFACT_REGISTRY_LOCATION }}-docker.pkg.dev'
         username: 'oauth2accesstoken'
         password: '${{ steps.auth.outputs.access_token }}'
-      # outputs:
-      #   container_registry: ${{ env.GCP_ARTIFACT_REGISTRY_LOCATION }}-docker.pkg.dev/${{ GCP_PROJECT_ID }}/${{ GCP_ARTIFACT_REGISTRY }}
 
 
     - name: Docker meta
@@ -73,7 +71,7 @@ jobs:
         context: .
         push: true
         file: ${{ matrix.image_name == 'frontend' && 'Dockerfile.frontend' || 'Dockerfile' }}
-        cache-from: type=registry,ref=${{ env.GCP_ARTIFACT_REGISTRY_LOCATION }}-docker.pkg.dev/${{ GCP_PROJECT_ID }}/${{ GCP_ARTIFACT_REGISTRY }}/${{ matrix.image_name }}:buildcache
-        cache-to: type=registry,ref=${{ env.GCP_ARTIFACT_REGISTRY_LOCATION }}-docker.pkg.dev/${{ GCP_PROJECT_ID }}/${{ GCP_ARTIFACT_REGISTRY }}/${{ matrix.image_name }}:buildcache,mode=max
+        cache-from: type=registry,ref=${{ env.GCP_ARTIFACT_REGISTRY_LOCATION }}-docker.pkg.dev/${{ env.GCP_PROJECT_ID }}/${{ env.GCP_ARTIFACT_REGISTRY }}/${{ matrix.image_name }}:buildcache
+        cache-to: type=registry,ref=${{ env.GCP_ARTIFACT_REGISTRY_LOCATION }}-docker.pkg.dev/${{ env.GCP_PROJECT_ID }}/${{ env.GCP_ARTIFACT_REGISTRY }}/${{ matrix.image_name }}:buildcache,mode=max
         tags: ${{ steps.meta.outputs.tags }}
         labels: ${{ steps.meta.outputs.labels }}
