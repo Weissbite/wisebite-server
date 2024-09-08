@@ -56,10 +56,10 @@ jobs:
       with:
         host: ${{ env.SSH_HOST }}
         username: ${{ env.SSH_USERNAME }}
-        key: ${{ secrets.WISEBITE_SSH_PRIVATE_KEY }}
+        key: ${{ secrets.WISEBITE_SERVER_SSH_PRIVATE_KEY }}
         proxy_host: ${{ env.SSH_PROXY_HOST }}
         proxy_username: ${{ env.SSH_USERNAME }}
-        proxy_key: ${{ secrets.WISEBITE_SSH_PRIVATE_KEY }}
+        proxy_key: ${{ secrets.WISEBITE_SERVER_SSH_PRIVATE_KEY }}
         script: |
           if [[ -f /home/off/${{ matrix.env }}/NO_DEPLOY ]]
           then
@@ -104,10 +104,10 @@ jobs:
       with:
         host: ${{ env.SSH_HOST }}
         username: ${{ env.SSH_USERNAME }}
-        key: ${{ secrets.WISEBITE_SSH_PRIVATE_KEY }}
+        key: ${{ secrets.WISEBITE_SERVER_SSH_PRIVATE_KEY }}
         proxy_host: ${{ env.SSH_PROXY_HOST }}
         proxy_username: ${{ env.SSH_USERNAME }}
-        proxy_key: ${{ secrets.WISEBITE_SSH_PRIVATE_KEY }}
+        proxy_key: ${{ secrets.WISEBITE_SERVER_SSH_PRIVATE_KEY }}
         script_stop: false
         script: |
           # while we would use shallow clone on a normal repo,
@@ -130,10 +130,10 @@ jobs:
       with:
         host: ${{ env.SSH_HOST }}
         username: ${{ env.SSH_USERNAME }}
-        key: ${{ secrets.WISEBITE_SSH_PRIVATE_KEY }}
+        key: ${{ secrets.WISEBITE_SERVER_SSH_PRIVATE_KEY }}
         proxy_host: ${{ env.SSH_PROXY_HOST }}
         proxy_username: ${{ env.SSH_USERNAME }}
-        proxy_key: ${{ secrets.WISEBITE_SSH_PRIVATE_KEY }}
+        proxy_key: ${{ secrets.WISEBITE_SERVER_SSH_PRIVATE_KEY }}
         script_stop: false
         script: |
           # Go to repository directory
@@ -163,7 +163,7 @@ jobs:
           echo "MINION_QUEUE=${{ env.PRODUCT_OPENER_DOMAIN }}" >> .env
           echo "MONGODB_HOST=${{ env.MONGODB_HOST }}" >> .env
           echo "POSTGRES_USER=${{ env.POSTGRES_USER }}" >> .env
-          echo "POSTGRES_PASSWORD=${{ secrets.WISEBITE_POSTGRES_PASSWORD }}" >> .env
+          echo "POSTGRES_PASSWORD=${{ secrets.WISEBITE_SERVER_POSTGRES_PASSWORD }}" >> .env
           echo "ROBOTOFF_URL=${{ env.ROBOTOFF_URL }}" >> .env
           echo "QUERY_URL=${{ env.QUERY_URL }}" >> .env
           echo "REDIS_URL=${{ env.REDIS_URL }}" >> .env
@@ -188,10 +188,10 @@ jobs:
       with:
         host: ${{ env.SSH_HOST }}
         username: ${{ env.SSH_USERNAME }}
-        key: ${{ secrets.WISEBITE_SSH_PRIVATE_KEY }}
+        key: ${{ secrets.WISEBITE_SERVER_SSH_PRIVATE_KEY }}
         proxy_host: ${{ env.SSH_PROXY_HOST }}
         proxy_username: ${{ env.SSH_USERNAME }}
-        proxy_key: ${{ secrets.WISEBITE_SSH_PRIVATE_KEY }}
+        proxy_key: ${{ secrets.WISEBITE_SERVER_SSH_PRIVATE_KEY }}
         script_stop: false
         script: |
           cd ${{ matrix.env }} && \
@@ -204,10 +204,10 @@ jobs:
       with:
         host: ${{ env.SSH_HOST }}
         username: ${{ env.SSH_USERNAME }}
-        key: ${{ secrets.WISEBITE_SSH_PRIVATE_KEY }}
+        key: ${{ secrets.WISEBITE_SERVER_SSH_PRIVATE_KEY }}
         proxy_host: ${{ env.SSH_PROXY_HOST }}
         proxy_username: ${{ env.SSH_USERNAME }}
-        proxy_key: ${{ secrets.WISEBITE_SSH_PRIVATE_KEY }}
+        proxy_key: ${{ secrets.WISEBITE_SERVER_SSH_PRIVATE_KEY }}
         command_timeout: 25m
         script_stop: false
         script: |
@@ -233,10 +233,10 @@ jobs:
       with:
         host: ${{ env.SSH_HOST }}
         username: ${{ env.SSH_USERNAME }}
-        key: ${{ secrets.WISEBITE_SSH_PRIVATE_KEY }}
+        key: ${{ secrets.WISEBITE_SERVER_SSH_PRIVATE_KEY }}
         proxy_host: ${{ env.SSH_PROXY_HOST }}
         proxy_username: ${{ env.SSH_USERNAME }}
-        proxy_key: ${{ secrets.WISEBITE_SSH_PRIVATE_KEY }}
+        proxy_key: ${{ secrets.WISEBITE_SERVER_SSH_PRIVATE_KEY }}
         command_timeout: 25m
         script_stop: false
         script: |
@@ -248,10 +248,10 @@ jobs:
       with:
         host: ${{ env.SSH_HOST }}
         username: ${{ env.SSH_USERNAME }}
-        key: ${{ secrets.WISEBITE_SSH_PRIVATE_KEY }}
+        key: ${{ secrets.WISEBITE_SERVER_SSH_PRIVATE_KEY }}
         proxy_host: ${{ env.SSH_PROXY_HOST }}
         proxy_username: ${{ env.SSH_USERNAME }}
-        proxy_key: ${{ secrets.WISEBITE_SSH_PRIVATE_KEY }}
+        proxy_key: ${{ secrets.WISEBITE_SERVER_SSH_PRIVATE_KEY }}
         command_timeout: 15m
         script_stop: false
         script: |
@@ -266,10 +266,10 @@ jobs:
       with:
         host: ${{ env.SSH_HOST }}
         username: ${{ env.SSH_USERNAME }}
-        key: ${{ secrets.WISEBITE_SSH_PRIVATE_KEY }}
+        key: ${{ secrets.WISEBITE_SERVER_SSH_PRIVATE_KEY }}
         proxy_host: ${{ env.SSH_PROXY_HOST }}
         proxy_username: ${{ env.SSH_USERNAME }}
-        proxy_key: ${{ secrets.WISEBITE_SSH_PRIVATE_KEY }}
+        proxy_key: ${{ secrets.WISEBITE_SERVER_SSH_PRIVATE_KEY }}
         script_stop: false
         script: |
           cd ${{ matrix.env }} && \
@@ -281,10 +281,10 @@ jobs:
       with:
         host: ${{ env.SSH_HOST }}
         username: ${{ env.SSH_USERNAME }}
-        key: ${{ secrets.WISEBITE_SSH_PRIVATE_KEY }}
+        key: ${{ secrets.WISEBITE_SERVER_SSH_PRIVATE_KEY }}
         proxy_host: ${{ env.SSH_PROXY_HOST }}
         proxy_username: ${{ env.SSH_USERNAME }}
-        proxy_key: ${{ secrets.WISEBITE_SSH_PRIVATE_KEY }}
+        proxy_key: ${{ secrets.WISEBITE_SERVER_SSH_PRIVATE_KEY }}
         script_stop: false
         script: |
           cd ${{ matrix.env }} && \
