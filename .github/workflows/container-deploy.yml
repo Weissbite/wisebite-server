@@ -203,6 +203,21 @@ jobs:
           make create_external_volumes && \
           make create_external_networks
 
+    - name: 'Authenticate to Google Cloud'
+      id: 'auth'
+      uses: 'google-github-actions/auth@v0.6.0'
+      with:
+        credentials_json: '${{ secrets.WISEBITE_SERVER_SA_GITHUB_ACTIONS }}'
+        token_format: 'access_token'
+
+    - name: 'Docker login'
+      id: docker
+      uses: 'docker/login-action@v1'
+      with:
+        registry: '${{ env.GCP_ARTIFACT_REGISTRY_LOCATION }}-docker.pkg.dev'
+        username: 'oauth2accesstoken'
+        password: '${{ steps.auth.outputs.access_token }}'
+
     - name: wait for docker images to be available
       # we sometimes have the images not ready immediately after build, so we prefer to wait for it
       uses: appleboy/ssh-action@master
