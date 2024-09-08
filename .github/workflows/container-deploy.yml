@@ -42,7 +42,7 @@ jobs:
         echo "FACETS_KP_URL=https://facets-kp.openfoodfacts.net/render-to-html" >> $GITHUB_ENV
         # deploy target
         echo "SSH_HOST=35.210.10.19" >> $GITHUB_ENV
-        echo "SSH_PROXY_HOST=ovh1.openfoodfacts.org" >> $GITHUB_ENV
+        echo "SSH_PROXY_HOST=35.210.10.19" >> $GITHUB_ENV
         echo "SSH_USERNAME=wisebite" >> $GITHUB_ENV
 
     - name: Set various variable for prod (org) deployment
