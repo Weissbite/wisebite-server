@@ -1,13 +1,13 @@
 name: Container Image Deployment CI
 
 on:
-  - workflow_dispatch:
-  - push:
-      branches:
-        - main
-        - deploy-*
-      tags:
-        - v*.*.*
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+      - deploy-*
+    tags:
+      - v*.*.*
 
 # Note on secrets used for connection
 # SSH_PRIVATE_KEY is the private key (shared between VM and host)
