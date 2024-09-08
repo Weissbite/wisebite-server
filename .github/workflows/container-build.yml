@@ -59,7 +59,7 @@ jobs:
       uses: docker/metadata-action@v5
       with:
         images: |
-          ${{ env.CONTAINER_REGISTRY }}/${{ matrix.image_name }}
+          ${{ env.GCP_ARTIFACT_REGISTRY_LOCATION }}-docker.pkg.dev/${{ env.GCP_PROJECT_ID }}/${{ env.GCP_ARTIFACT_REGISTRY }}/${{ matrix.image_name }}
         tags: |
           type=semver,pattern={{version}}
           type=ref,event=pr
