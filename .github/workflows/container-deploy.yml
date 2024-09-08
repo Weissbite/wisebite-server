@@ -30,7 +30,7 @@ jobs:
         echo "REDIS_URL=redis:6379" >> $GITHUB_ENV
         echo "RATE_LIMITER_BLOCKING_ENABLED=0" >> $GITHUB_ENV
         echo "MONGODB_HOST=35.210.10.19" >> $GITHUB_ENV
-        echo "ROBOTOFF_URL=https://robotoff.openfoodfacts.net" >> $GITHUB_ENV
+        echo "ROBOTOFF_URL=https://robotoff.35.210.10.19" >> $GITHUB_ENV
         echo "QUERY_URL=http://35.210.10.19:5511" >> $GITHUB_ENV
         echo "PRODUCT_OPENER_DOMAIN=wisebite.app" >> $GITHUB_ENV
         echo "PRODUCT_OPENER_FLAVOR=openfoodfacts" >> $GITHUB_ENV
@@ -39,7 +39,7 @@ jobs:
         echo "CROWDIN_PROJECT_IDENTIFIER=openfoodfacts" >> $GITHUB_ENV
         echo "GEOLITE2_PATH=/usr/local/share/GeoLite2-Country/GeoLite2-Country.mmdb" >> $GITHUB_ENV
         echo "INFLUXDB_HOST=35.210.10.19" >> $GITHUB_ENV
-        echo "FACETS_KP_URL=https://facets-kp.openfoodfacts.net/render-to-html" >> $GITHUB_ENV
+        echo "FACETS_KP_URL=https://facets-kp.35.210.10.19.net/render-to-html" >> $GITHUB_ENV
         # deploy target
         echo "SSH_HOST=35.210.10.19" >> $GITHUB_ENV
         echo "SSH_PROXY_HOST=35.210.10.19" >> $GITHUB_ENV
@@ -290,10 +290,10 @@ jobs:
           cd ${{ matrix.env }} && \
           make prune
 
-    - uses: basos9/grafana-annotation-action@v1.0.3
-      if: ${{ always() }}
-      with:
-        apiHost: https://grafana.openfoodfacts.org
-        apiToken: ${{ secrets.GRAFANA_API_TOKEN }}
-        text: <a href="https://github.com/${{github.repository}}/actions/runs/${{github.run_id}}">Deployment ${{ steps.livecheck.outcome }} on ${{ matrix.env }}</a>
-        tags: type:deployment,origin:github,status:${{ steps.livecheck.outcome }},repo:${{ github.repository }},sha:${{ github.sha }},app:robotoff,env:${{ matrix.env }}
+    # - uses: basos9/grafana-annotation-action@v1.0.3
+    #   if: ${{ always() }}
+    #   with:
+    #     apiHost: https://grafana.openfoodfacts.org
+    #     apiToken: ${{ secrets.GRAFANA_API_TOKEN }}
+    #     text: <a href="https://github.com/${{github.repository}}/actions/runs/${{github.run_id}}">Deployment ${{ steps.livecheck.outcome }} on ${{ matrix.env }}</a>
+    #     tags: type:deployment,origin:github,status:${{ steps.livecheck.outcome }},repo:${{ github.repository }},sha:${{ github.sha }},app:robotoff,env:${{ matrix.env }}

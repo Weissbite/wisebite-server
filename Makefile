@@ -221,7 +221,7 @@ import_sample_data:run_deps
 	else \
 	 	echo "🥫 Not importing sample data into MongoDB (only for po_off project)"; \
 	fi
-	
+
 import_more_sample_data:run_deps
 	@echo "🥫 Importing sample data (~2000 products) into MongoDB …"
 	${DOCKER_COMPOSE_RUN} run --rm backend bash /opt/product-opener/scripts/import_more_sample_data.sh
